@@ -7,13 +7,10 @@ WORKDIR /app
 # 复制项目文件到容器中
 COPY . /app
 
+RUN pip config set global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
 # 安装依赖
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 设置环境变量（在构建时设置默认值）
-ENV API_KEY=your_default_api_key
-ENV BASE_URL=https://api.deepseek.com
-ENV MODEL=deepseek-chat
 
 # 暴露 Streamlit 的默认端口
 EXPOSE 8501
